@@ -1,38 +1,55 @@
-//import userModel from '../models/user'
 const userModel = require('../models').User
+const bcrypt = require('bcrypt')
+const salt = bcrypt.genSaltSync(10)
 
 const register = async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body
 
-    console.log(firstName, lastName, email, password)
-
     const userExist = await userModel.findOne({ where: { email: email } })
-
-    console.log(userExist)
 
     if (userExist) {
       throw new Error('User already exists')
     } else {
+      const passwordHash = bcrypt.hashSync(password, salt)
+
       const user = await userModel.create({
         firstName: firstName,
         lastName: lastName,
         email: email,
-        password: password,
+        password: passwordHash,
       })
 
       res.status(200).send('User added')
     }
   } catch (error) {
-    res.status(409).send(error.message)
+    res.send(error.message)
   }
 }
 
-const login = (req, res) => {
+const login = async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body
+    const { email, password } = req.body
+
+    const userData = await userModel.findOne({
+      where: { email: email },
+    })
+
+    if (!userData) {
+      throw new Error('User not found!')
+    }
+
+    const user = userData.toJSON()
+
+    const validPassword = bcrypt.compareSync(password, user.password)
+
+    if (validPassword) {
+      res.status(200).send('Success')
+    } else {
+      throw new Error('Incorrect password or email.')
+    }
   } catch (error) {
-    console.log(error)
+    res.send(error.message)
   }
 }
 
