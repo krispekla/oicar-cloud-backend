@@ -10,7 +10,6 @@ const port = process.env.PORT
 
 app.use(cors())
 app.use(bodyParser.json())
-
 app.use(routes)
 
 app.listen(port, () => console.log(`Server started at port ${process.env.PORT}`))

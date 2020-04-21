@@ -1,5 +1,5 @@
 //import userModel from '../models/user'
-const userModel = require('../models/user').User
+const userModel = require('../models').User
 
 const register = async (req, res) => {
   try {
@@ -7,21 +7,24 @@ const register = async (req, res) => {
 
     console.log(firstName, lastName, email, password)
 
-    const resultExist = await userModel.findOne({ where: { email: email } })
+    const userExist = await userModel.findOne({ where: { email: email } })
 
-    if (resultExist) throw new Error(409, 'User already exists')
+    console.log(userExist)
 
-    const resultUser = await userModel.create({
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-    })
+    if (userExist) {
+      throw new Error('User already exists')
+    } else {
+      const user = await userModel.create({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+      })
 
-    res.send(resultUser)
-    console.log('result: ', resultUser)
+      res.status(200).send('User added')
+    }
   } catch (error) {
-    throw new Error(409, error.message)
+    res.status(409).send(error.message)
   }
 }
 
