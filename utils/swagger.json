@@ -1,0 +1,18 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "version": "0.1",
+    "title": "Cloud Calculator API Document",
+    "description": "Description of all api endpoints for cloud calculator",
+    "termsOfService": "",
+    "contact": {
+      "name": "Cloud Calculator 2020",
+      "email": "kpeklar@racunarstvo.hr",
+      "url": "http://localhost:8012/api/"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  }
+}

@@ -1,9 +1,12 @@
-//import { register, login } from './controllers/user.controller.js'
-const userController = require('../controllers/user.controller')
-const express = require('express')
+import express from 'express'
+import swaggerUi from 'swagger-ui-express'
+import swaggerDocument from '../utils/swagger'
+import * as userController from '../controllers/user.controller'
 const router = express.Router()
 
-router.post('/user/register', userController.register)
-router.post('/user/login', userController.login)
+router.post('/api/user/register', userController.register)
+router.post('/api/user/login', userController.login)
+router.use('/api/docs', swaggerUi.serve)
+router.get('/api/docs', swaggerUi.setup(swaggerDocument))
 
-module.exports = router
+export default router

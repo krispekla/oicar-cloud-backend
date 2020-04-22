@@ -1,5 +1,5 @@
-const userModel = require('../models').User
-const bcrypt = require('bcrypt')
+import { User as userModel } from '../models'
+import bcrypt from 'bcrypt'
 const salt = bcrypt.genSaltSync(10)
 
 const register = async (req, res) => {
@@ -53,4 +53,4 @@ const login = async (req, res) => {
   }
 }
 
-module.exports = { register, login }
+export { register, login }

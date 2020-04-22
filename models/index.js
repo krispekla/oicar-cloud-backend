@@ -1,17 +1,15 @@
 'use strict'
 
-const fs = require('fs')
-const path = require('path')
-const Sequelize = require('sequelize')
+import fs from 'fs'
+import path from 'path'
+import Sequelize from 'sequelize'
+import config from '../utils/config.js'
+
 const basename = path.basename(__filename)
-const config = require('../utils/config.js')
 const db = {}
 
 let sequelize
-sequelize = new Sequelize(config.database, config.username, config.password, {
-  ...config,
-  dialect: process.env.DB_DIALECT,
-})
+sequelize = new Sequelize(config.database, config.username, config.password, config)
 
 fs.readdirSync(__dirname)
   .filter(file => {
