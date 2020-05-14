@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Oicar.Dal.Entities;
 using Oicar.Service.Interfaces;
+using Oicar.Service.Models;
 
 namespace Oicar.Api.Controllers
 {
@@ -20,28 +21,19 @@ namespace Oicar.Api.Controllers
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
         }
 
-        //Samo za brzo testiranje da je sve povezano
-        [HttpGet]
+        [HttpPost]
         [Route("register")]
-        public ActionResult Register()
-
+        public ActionResult Register([FromBody] User user)
         {
-            User user = new User();
-            _userService.Register(user);
-            return Ok();
+            return Ok(_userService.Register(user));
+
         }
 
         [HttpPost]
         [Route("login")]
-        public ActionResult Login()
+        public ActionResult Login([FromBody] LoginDTO user)
         {
-            //User user = new User();
-            //_userService.Login(user);
-            Console.WriteLine("prosao");
-            User user = new User();
-            user.FirstName = "Kris";
-            user.Email= "test@";
-            return Ok(user);
+            return Ok(_userService.Login(user));
         }
     }
 

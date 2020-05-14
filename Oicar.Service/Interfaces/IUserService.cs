@@ -1,10 +1,11 @@
 ﻿using Oicar.Dal.Entities;
+using Oicar.Service.Models;
 
 namespace Oicar.Service.Interfaces
 {
     public interface IUserService
     {
-        void Login(User user);
-        void Register(User user);
+        object Login(LoginDTO user);
+        object Register(User user);
     }
 }
