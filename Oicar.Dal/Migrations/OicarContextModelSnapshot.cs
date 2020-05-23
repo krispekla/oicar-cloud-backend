@@ -19,6 +19,165 @@ namespace Oicar.Dal.Migrations
                 .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            modelBuilder.Entity("Oicar.Dal.Entities.CloudDbSQL", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("AverageDaysPerWeek")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("AverageHoursPerDay")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("BaskupSize")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CpuCores")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("Instance")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Location")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("Ram")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SQLServerType")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CloudSQL");
+                });
+
+            modelBuilder.Entity("Oicar.Dal.Entities.CloudFunction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("ExecutinPerRequestInMiliseconds")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("ExecutionsPerMonth")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("Location")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("MemorySizeInMB")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CloudFunction");
+                });
+
+            modelBuilder.Entity("Oicar.Dal.Entities.CloudStorage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("Location")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("ReadOperationsPerMonth")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("TotalAmount")
+                        .HasColumnType("double precision");
+
+                    b.Property<double>("WriteOperationsPerMonth")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CloudStorage");
+                });
+
+            modelBuilder.Entity("Oicar.Dal.Entities.CloudVM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("AverageDaysPerWeek")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("AverageHoursPerDay")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Core")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("InstanceNb")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Location")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("OperatingSystem")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("Ram")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("Storage")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("StorageType")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CloudVM");
+                });
+
             modelBuilder.Entity("Oicar.Dal.Entities.User", b =>
                 {
                     b.Property<int>("Id")
@@ -47,6 +206,28 @@ namespace Oicar.Dal.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2020, 5, 23, 20, 22, 49, 557, DateTimeKind.Local).AddTicks(150),
+                            Email = "admin@test.com",
+                            FirstName = "Admin",
+                            LastName = "Ad",
+                            Modified = new DateTime(2020, 5, 23, 20, 22, 49, 567, DateTimeKind.Local).AddTicks(1210),
+                            Password = "Admin!123"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2020, 5, 23, 20, 22, 49, 567, DateTimeKind.Local).AddTicks(3970),
+                            Email = "test@test.com",
+                            FirstName = "Test",
+                            LastName = "Testic",
+                            Modified = new DateTime(2020, 5, 23, 20, 22, 49, 567, DateTimeKind.Local).AddTicks(4000),
+                            Password = "Test!123"
+                        });
                 });
 #pragma warning restore 612, 618
         }

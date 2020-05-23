@@ -12,3 +12,8 @@
 1. enable-migrations
 2. Add-Migration "naziv migracije"
 3. update-database
+
+## Migrations on mac
+1. OicarContext comment necesary lines
+2. Create migration "dotnet ef migrations add nameOfMigration"
+3. Update db "dotnet ef database update"

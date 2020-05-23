@@ -1,15 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Oicar.Dal.Entities;
 using Oicar.Dal.EntityConfigurations;
-using System;
 
 namespace Oicar.Dal
 {
     public class OicarContext : DbContext
     {
-        public OicarContext(DbContextOptions<OicarContext> options) : base(options)
+        //Uncomment on run
+        //public OicarContext(DbContextOptions<OicarContext> options) : base(options)
+        //{
+        //}
+
+        //Comment on run
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseNpgsql("server=localhost;database=postgres;User ID=postgres;password=postgres;");
         }
 
         public DbSet<User> Users { get; set; }
