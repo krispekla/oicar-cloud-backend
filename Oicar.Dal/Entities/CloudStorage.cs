@@ -8,8 +8,7 @@ namespace Oicar.Dal.Entities
     public enum CloudProvider
     {
         AWS,
-        AZURE,
-        GCLOUD
+        AZURE
     }
 
     public class CloudStorage : BaseEntity
