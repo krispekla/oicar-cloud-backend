@@ -19,7 +19,6 @@
         public int Ram { get; set; }
         public double Storage { get; set; }
         public StorageType StorageType { get; set; }
-        public Location Location { get; set; }
         public int AverageHoursPerDay { get; set; }
         public int AverageDaysPerWeek { get; set; }
         public CloudProvider CloudProvider { get; set; }

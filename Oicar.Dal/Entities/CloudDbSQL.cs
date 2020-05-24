@@ -20,7 +20,6 @@ namespace Oicar.Dal.Entities
         public int AverageHoursPerDay { get; set; }
         public int AverageDaysPerWeek { get; set; }
         public SQLServerType SQLServerType { get; set; }
-        public Location Location { get; set; }
         public CloudProvider CloudProvider { get; set; }
         public double Price { get; set; }
     }

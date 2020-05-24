@@ -4,13 +4,7 @@ using System.Text;
 
 namespace Oicar.Dal.Entities
 {
-    public enum Location
-    {
-        Europe,
-        America,
-        Asia
-    }
-
+  
     public enum CloudProvider
     {
         AWS,
@@ -20,7 +14,6 @@ namespace Oicar.Dal.Entities
 
     public class CloudStorage : BaseEntity
     {
-        public Location Location { get; set; }
         public double TotalAmount { get; set; }
         public double ReadOperationsPerMonth { get; set; }
         public double WriteOperationsPerMonth { get; set; }
