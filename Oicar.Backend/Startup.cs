@@ -25,6 +25,7 @@ namespace Oicar.Backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ICalculatorService, CalculatorService>();
             services.AddDbContext<OicarContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("default")));
             services.AddControllers();

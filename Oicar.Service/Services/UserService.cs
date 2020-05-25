@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Oicar.Dal;
+﻿using Oicar.Dal;
 using Oicar.Dal.Entities;
 using Oicar.Dal.Interfaces;
 using Oicar.Service.Interfaces;
 using Oicar.Service.Models;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Oicar.Service.Services
 {
