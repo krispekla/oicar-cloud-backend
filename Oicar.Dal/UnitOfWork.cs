@@ -8,11 +8,24 @@ namespace Oicar.Dal
     {
         public IUserRepository Users { get; private set; }
 
+        public ICloudDbSQLRepository CloudDbSQL { get; private set; }
+
+        public ICloudFunctionRepository CloudFunction { get; private set; }
+
+        public ICloudStorageRepository CloudStorage { get; private set; }
+
+        public ICloudVMRepository CloudVM { get; private set; }
+
+
         private readonly OicarContext _context;
         public UnitOfWork(OicarContext context)
         {
             _context = context;
             Users = new UserRepository(_context);
+            CloudDbSQL = new CloudDbSQLRepository(_context);
+            CloudFunction = new CloudFunctionRepository(_context);
+            CloudStorage = new CloudStorageRepository(_context);
+            CloudVM = new CloudVMRepository(_context);
         }
 
         public int Complete()
