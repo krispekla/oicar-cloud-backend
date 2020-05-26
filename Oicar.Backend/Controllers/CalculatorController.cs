@@ -16,6 +16,7 @@ namespace Oicar.Api.Controllers
             _calculatorService = calculatorService ?? throw new ArgumentNullException(nameof(calculatorService));
         }
 
+        [HttpPost]
         public ActionResult<CloudCombinationResultDTO> Calculate([FromBody]CloudCombinationDTO cloudCombination)
         {
             return _calculatorService.Calculate(cloudCombination);
