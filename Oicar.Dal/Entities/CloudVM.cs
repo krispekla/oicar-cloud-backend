@@ -1,4 +1,6 @@
-﻿namespace Oicar.Dal.Entities
+﻿using System.Collections.Generic;
+
+namespace Oicar.Dal.Entities
 {
     public enum OperatingSystem
     {
@@ -24,5 +26,6 @@
         public CloudProvider CloudProvider { get; set; }
         public double Price { get; set; }
 
+        public List<UserCloud> UserCloud { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Oicar.Dal.EntityConfigurations
             {
                 Id = 1,
                 ExecutinPerRequestInMiliseconds = 10000,
-                MemorySizeInMB = 10000,
+                MemorySizeInMB = 1,
                 ExecutionsPerMonth = 10000,
                 CloudProvider = CloudProvider.AWS,
                 Price = 10
@@ -25,7 +25,7 @@ namespace Oicar.Dal.EntityConfigurations
             {
                 Id = 2,
                 ExecutinPerRequestInMiliseconds = 10000,
-                MemorySizeInMB = 10000,
+                MemorySizeInMB = 1,
                 ExecutionsPerMonth = 10000,
                 CloudProvider = CloudProvider.AZURE,
                 Price = 12
@@ -34,7 +34,7 @@ namespace Oicar.Dal.EntityConfigurations
             {
                 Id = 3,
                 ExecutinPerRequestInMiliseconds = 10000,
-                MemorySizeInMB = 10000,
+                MemorySizeInMB = 1,
                 ExecutionsPerMonth = 100000,
                 CloudProvider = CloudProvider.GCLOUD,
                 Price = 9
@@ -43,7 +43,7 @@ namespace Oicar.Dal.EntityConfigurations
             {
                 Id = 4,
                 ExecutinPerRequestInMiliseconds = 50000,
-                MemorySizeInMB = 50000,
+                MemorySizeInMB = 10,
                 ExecutionsPerMonth = 50000,
                 CloudProvider = CloudProvider.AWS,
                 Price = 18
@@ -52,7 +52,7 @@ namespace Oicar.Dal.EntityConfigurations
             {
                 Id = 5,
                 ExecutinPerRequestInMiliseconds = 50000,
-                MemorySizeInMB = 50000,
+                MemorySizeInMB = 10,
                 ExecutionsPerMonth = 50000,
                 CloudProvider = CloudProvider.AZURE,
                 Price = 20
@@ -61,7 +61,7 @@ namespace Oicar.Dal.EntityConfigurations
             {
                 Id = 6,
                 ExecutinPerRequestInMiliseconds = 50000,
-                MemorySizeInMB = 50000,
+                MemorySizeInMB = 10,
                 ExecutionsPerMonth = 50000,
                 CloudProvider = CloudProvider.GCLOUD,
                 Price = 22
@@ -70,7 +70,7 @@ namespace Oicar.Dal.EntityConfigurations
             {
                 Id = 7,
                 ExecutinPerRequestInMiliseconds = 20000,
-                MemorySizeInMB = 250000,
+                MemorySizeInMB = 100,
                 ExecutionsPerMonth = 1000000,
                 CloudProvider = CloudProvider.AWS,
                 Price = 44
@@ -79,7 +79,7 @@ namespace Oicar.Dal.EntityConfigurations
             {
                 Id = 8,
                 ExecutinPerRequestInMiliseconds = 20000,
-                MemorySizeInMB = 250000,
+                MemorySizeInMB = 100,
                 ExecutionsPerMonth = 1000000,
                 CloudProvider = CloudProvider.AZURE,
                 Price = 41
@@ -88,7 +88,34 @@ namespace Oicar.Dal.EntityConfigurations
             {
                 Id = 9,
                 ExecutinPerRequestInMiliseconds = 20000,
-                MemorySizeInMB = 250000,
+                MemorySizeInMB = 100,
+                ExecutionsPerMonth = 1000000,
+                CloudProvider = CloudProvider.GCLOUD,
+                Price = 39
+            },
+              new CloudFunction()
+              {
+                  Id = 10,
+                  ExecutinPerRequestInMiliseconds = 20000,
+                  MemorySizeInMB = 1000,
+                  ExecutionsPerMonth = 1000000,
+                  CloudProvider = CloudProvider.AWS,
+                  Price = 44
+              },
+            new CloudFunction()
+            {
+                Id = 11,
+                ExecutinPerRequestInMiliseconds = 20000,
+                MemorySizeInMB = 1000,
+                ExecutionsPerMonth = 1000000,
+                CloudProvider = CloudProvider.AZURE,
+                Price = 41
+            },
+            new CloudFunction()
+            {
+                Id = 12,
+                ExecutinPerRequestInMiliseconds = 20000,
+                MemorySizeInMB = 1000,
                 ExecutionsPerMonth = 1000000,
                 CloudProvider = CloudProvider.GCLOUD,
                 Price = 39

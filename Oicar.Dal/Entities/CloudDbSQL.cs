@@ -22,5 +22,7 @@ namespace Oicar.Dal.Entities
         public SQLServerType SQLServerType { get; set; }
         public CloudProvider CloudProvider { get; set; }
         public double Price { get; set; }
+
+        public List<UserCloud> UserCloud { get; set; }
     }
 }

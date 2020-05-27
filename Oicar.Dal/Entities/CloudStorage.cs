@@ -19,5 +19,7 @@ namespace Oicar.Dal.Entities
         public double WriteOperationsPerMonth { get; set; }
         public CloudProvider CloudProvider { get; set; }
         public double Price { get; set; }
+
+        public List<UserCloud> UserCloud { get; set; }
     }
 }
