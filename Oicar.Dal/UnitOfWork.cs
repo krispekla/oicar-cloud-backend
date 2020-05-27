@@ -8,6 +8,8 @@ namespace Oicar.Dal
     {
         public IUserRepository Users { get; private set; }
 
+        public IUserCloudRepository UserCloud { get; private set; }
+
         public ICloudDbSQLRepository CloudDbSQL { get; private set; }
 
         public ICloudFunctionRepository CloudFunction { get; private set; }
@@ -26,6 +28,7 @@ namespace Oicar.Dal
             CloudFunction = new CloudFunctionRepository(_context);
             CloudStorage = new CloudStorageRepository(_context);
             CloudVM = new CloudVMRepository(_context);
+            UserCloud = new UserCloudRepository(_context);
         }
 
         public int Complete()

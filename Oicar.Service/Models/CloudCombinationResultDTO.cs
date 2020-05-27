@@ -8,5 +8,6 @@ namespace Oicar.Service.Models
     {
         public CloudCombinationDTO CloudCombinationInput { get; set; }
         public CloudCombinationDTO CloudCombinationResult { get; set; }
+        public int UserId { get; set; }
     }
 }
