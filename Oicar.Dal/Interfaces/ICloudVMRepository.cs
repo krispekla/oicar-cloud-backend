@@ -7,5 +7,6 @@ namespace Oicar.Dal.Interfaces
 {
     public interface ICloudVMRepository : IRepository<CloudVM>
     {
+        List<CloudVM> GetCheapestCloud(CloudVM cloudVM);
     }
 }
