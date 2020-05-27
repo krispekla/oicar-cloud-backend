@@ -21,8 +21,8 @@ namespace Oicar.Service.Services
 
         public CloudCombinationResultDTO Calculate(CloudCombinationDTO cloudCombinationDTO)
         {
-            IEnumerable<CloudFunction> cheapestCloudFunctions = _uow.CloudFunction.GetCheapestCloud(cloudCombinationDTO.CloudFunction);
-            IEnumerable<CloudStorage> cheapestCloudStorage = _uow.CloudStorage.GetCheapestCloud(cloudCombinationDTO.CloudStorage);
+            List<CloudFunction> cheapestCloudFunctions = _uow.CloudFunction.GetCheapestCloud(cloudCombinationDTO.CloudFunction);
+            List<CloudStorage> cheapestCloudStorage = _uow.CloudStorage.GetCheapestCloud(cloudCombinationDTO.CloudStorage);
 
             CloudCombinationResultDTO finalResult = new CloudCombinationResultDTO();
 
@@ -32,7 +32,7 @@ namespace Oicar.Service.Services
             return finalResult;
         }
 
-        private CloudCombinationDTO CalculateCheapestByComparingAllPrices(IEnumerable<CloudFunction> cheapestCloudFunctions, IEnumerable<CloudStorage> cheapestCloudStorage)
+        private CloudCombinationDTO CalculateCheapestByComparingAllPrices(List<CloudFunction> cheapestCloudFunctions, List<CloudStorage> cheapestCloudStorage)
         {
             List<CloudProvider> cloudProvider = Enum.GetValues(typeof(CloudProvider)).Cast<CloudProvider>().ToList();
             Dictionary<CloudProvider, double> providerWithTotalPrice = new Dictionary<CloudProvider, double>();
@@ -51,7 +51,7 @@ namespace Oicar.Service.Services
             return cheapestCombination;
         }
 
-        private double SumAllPrices(CloudProvider providerEnum, IEnumerable<CloudFunction> cheapestCloudFunctions, IEnumerable<CloudStorage> cheapestCloudStorage)
+        private double SumAllPrices(CloudProvider providerEnum, List<CloudFunction> cheapestCloudFunctions, List<CloudStorage> cheapestCloudStorage)
         {
             double sum = 0;
             sum += cheapestCloudFunctions.Where(x => x.CloudProvider.Equals(providerEnum)).FirstOrDefault().Price;

@@ -5,6 +5,6 @@ namespace Oicar.Dal.Interfaces
 {
     public interface ICloudStorageRepository : IRepository<CloudStorage>
     {
-        IEnumerable<CloudStorage> GetCheapestCloud(CloudStorage cloudStorage);
+        List<CloudStorage> GetCheapestCloud(CloudStorage cloudStorage);
     }
 }

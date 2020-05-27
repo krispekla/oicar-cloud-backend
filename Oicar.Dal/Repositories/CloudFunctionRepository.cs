@@ -15,10 +15,10 @@ namespace Oicar.Dal.Repositories
             get { return Context as OicarContext; }
         }
 
-        public IEnumerable<CloudFunction> GetCheapestCloud(CloudFunction cloudFunction)
+        public List<CloudFunction> GetCheapestCloud(CloudFunction cloudFunction)
         {
             var functions = Context.Set<CloudFunction>().Where(x => x.ExecutinPerRequestInMiliseconds >= cloudFunction.ExecutinPerRequestInMiliseconds &&
-             x.MemorySizeInMB >= cloudFunction.MemorySizeInMB && x.ExecutionsPerMonth >= cloudFunction.ExecutionsPerMonth).OrderBy(y => y.Price);
+             x.MemorySizeInMB >= cloudFunction.MemorySizeInMB && x.ExecutionsPerMonth >= cloudFunction.ExecutionsPerMonth).OrderBy(y => y.Price).ToList();
 
             List<CloudFunction> result = new List<CloudFunction>();
 

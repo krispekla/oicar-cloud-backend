@@ -15,10 +15,10 @@ namespace Oicar.Dal.Repositories
             get { return Context as OicarContext; }
         }
 
-        public IEnumerable<CloudStorage> GetCheapestCloud(CloudStorage cloudStorage)
+        public List<CloudStorage> GetCheapestCloud(CloudStorage cloudStorage)
         {
             var functions = Context.Set<CloudStorage>().Where(x => x.TotalAmount >= cloudStorage.TotalAmount &&
-         x.ReadOperationsPerMonth >= cloudStorage.ReadOperationsPerMonth && x.WriteOperationsPerMonth >= cloudStorage.WriteOperationsPerMonth).OrderBy(y => y.Price);
+         x.ReadOperationsPerMonth >= cloudStorage.ReadOperationsPerMonth && x.WriteOperationsPerMonth >= cloudStorage.WriteOperationsPerMonth).OrderBy(y => y.Price).ToList();
 
             List<CloudStorage> result = new List<CloudStorage>();
 

@@ -6,6 +6,6 @@ namespace Oicar.Dal.Interfaces
 {
     public interface ICloudFunctionRepository : IRepository<CloudFunction>
     {
-        IEnumerable<CloudFunction> GetCheapestCloud(CloudFunction cloudFunction);
+        List<CloudFunction> GetCheapestCloud(CloudFunction cloudFunction);
     }
 }
