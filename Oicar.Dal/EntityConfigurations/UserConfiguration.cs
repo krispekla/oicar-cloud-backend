@@ -11,13 +11,14 @@ namespace Oicar.Dal.EntityConfigurations
     {
         public UserConfiguration(EntityTypeBuilder<User> entity)
         {
+            //Password is "admin"
             entity.ToTable("User");
             entity.HasData(new User()
                 {
                     Id = 1,
                     FirstName = "Admin",
                     LastName = "Ad",
-                    Password = "Admin!123",
+                    Password = "10000.7mSNp+Oapzv2iVbiybMmSA==.TjfFGVah1ko7+nrYvgKIBwpJGGgVzRz2BcG24jUBMiE=",
                     Email = "admin@test.com",
                 },
                 new User()
@@ -25,7 +26,7 @@ namespace Oicar.Dal.EntityConfigurations
                     Id = 2,
                     FirstName = "Test",
                     LastName = "Testic",
-                    Password = "Test!123",
+                    Password = "10000.7mSNp+Oapzv2iVbiybMmSA==.TjfFGVah1ko7+nrYvgKIBwpJGGgVzRz2BcG24jUBMiE=",
                     Email = "test@test.com",
                 }
             );

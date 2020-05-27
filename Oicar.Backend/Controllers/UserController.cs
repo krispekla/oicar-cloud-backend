@@ -26,7 +26,6 @@ namespace Oicar.Api.Controllers
         public ActionResult Register([FromBody] User user)
         {
             return Ok(_userService.Register(user));
-
         }
 
         [HttpPost]
