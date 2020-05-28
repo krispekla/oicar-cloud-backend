@@ -2,12 +2,12 @@
 
 namespace Oicar.Service.Interfaces
 {
-    public interface BaseCloudInterface<TEntity>
+    public interface BaseCloudInterface<T>
     {
-        TEntity Get(int id);
-        List<TEntity> GetAll();
-        object Add(TEntity entity);
-        object Remove(TEntity entity);
-        object Update(TEntity entity);
+        T Get(int id);
+        List<T> GetAll();
+        object Add(T entity);
+        object Remove(T entity);
+        object Update(T entity);
     }
 }
