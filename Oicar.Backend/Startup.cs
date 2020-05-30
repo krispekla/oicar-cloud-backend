@@ -30,6 +30,7 @@ namespace Oicar.Backend
             services.AddTransient<ICloudFunctionService, CloudFunctionService>();
             services.AddTransient<ICloudStorageService, CloudStorageService>();
             services.AddTransient<ICloudVMService, CloudVMService>();
+            services.AddTransient<ICloudNewsService, CloudNewsService>();
             services.AddTransient<IDbSQLService, DbSQLService>();
             services.AddDbContext<OicarContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("default")));

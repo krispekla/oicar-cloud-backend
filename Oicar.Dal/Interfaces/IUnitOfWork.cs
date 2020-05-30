@@ -10,6 +10,7 @@ namespace Oicar.Dal.Interfaces
         ICloudFunctionRepository CloudFunction { get; }
         ICloudStorageRepository CloudStorage { get; }
         ICloudVMRepository CloudVM { get; }
+        INewsRepository News { get; }
         int Complete();
     }
 }

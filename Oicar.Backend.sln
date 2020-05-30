@@ -15,6 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		drop_tables.sql = drop_tables.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewsPicture", "NewsPicture", "{0B2770C1-CA21-44F2-9F0E-50AEA11D31F5}"
+	ProjectSection(SolutionItems) = preProject
+		gcloud-theta.jpg = gcloud-theta.jpg
+		gartner-cloud.jpg = gartner-cloud.jpg
+		covid-cloud.jpg = covid-cloud.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,5 +46,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A6DD679F-2D1F-4D51-86A0-2DE3AA71379B}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0B2770C1-CA21-44F2-9F0E-50AEA11D31F5} = {15F0BF61-E6A7-49E7-8C17-6D82E5C238AC}
 	EndGlobalSection
 EndGlobal

@@ -23,6 +23,7 @@ namespace Oicar.Dal
         public DbSet<CloudVM> CloudVMs { get; set; }
         public DbSet<CloudFunction> CloudFunctions { get; set; }
         public DbSet<CloudDbSQL> CloudDbSQLs { get; set; }
+        public DbSet<NewsPost> NewsPosts { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,6 +34,7 @@ namespace Oicar.Dal
             new CloudFunctionConfiguration(modelBuilder.Entity<CloudFunction>());
             new CloudDbSQLConfiguration(modelBuilder.Entity<CloudDbSQL>());
             new UserCloudConfiguration(modelBuilder.Entity<UserCloud>());
+            new NewsPostConfiguration(modelBuilder.Entity<NewsPost>());
         }
     }
 }

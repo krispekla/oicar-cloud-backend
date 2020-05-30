@@ -17,6 +17,7 @@ namespace Oicar.Dal
         public ICloudStorageRepository CloudStorage { get; private set; }
 
         public ICloudVMRepository CloudVM { get; private set; }
+        public INewsRepository News { get; private set; }
 
 
         private readonly OicarContext _context;
@@ -29,6 +30,7 @@ namespace Oicar.Dal
             CloudStorage = new CloudStorageRepository(_context);
             CloudVM = new CloudVMRepository(_context);
             UserCloud = new UserCloudRepository(_context);
+            News = new NewsRepository(_context);
         }
 
         public int Complete()
