@@ -8,11 +8,11 @@ namespace Oicar.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DbSQLCoudController : ControllerBase
+    public class DbSQLCloudController : ControllerBase
     {
         private readonly IDbSQLService _dbSQLService;
 
-        public DbSQLCoudController(IDbSQLService dbSQLService)
+        public DbSQLCloudController(IDbSQLService dbSQLService)
         {
             _dbSQLService = dbSQLService ?? throw new ArgumentNullException(nameof(dbSQLService));
         }
