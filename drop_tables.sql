@@ -1,6 +1,6 @@
 
 DROP TABLE public."NewsPost";
-DROP TABLE public."UserCloud";
+DROP TABLE public."UserClouds";
 DROP TABLE public."User";
 DROP TABLE public."CloudFunction";
 DROP TABLE public."CloudSQL";

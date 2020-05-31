@@ -16,5 +16,4 @@ namespace Oicar.Dal.Repositories
             get { return Context as OicarContext; }
         }
     }
-    }
 }
