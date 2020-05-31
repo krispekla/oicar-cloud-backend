@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Oicar.Dal.Entities;
@@ -10,6 +11,7 @@ using Oicar.Service.Models;
 
 namespace Oicar.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -21,6 +23,7 @@ namespace Oicar.Api.Controllers
             _userService = userService ?? throw new ArgumentNullException(nameof(userService));
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("register")]
         public ActionResult Register([FromBody] User user)
@@ -28,9 +31,10 @@ namespace Oicar.Api.Controllers
             return Ok(_userService.Register(user));
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("login")]
-        public ActionResult Login([FromBody] LoginDTO user)
+        public ActionResult<LoginDTO> Login([FromBody] LoginDTO user)
         {
             return Ok(_userService.Login(user));
         }

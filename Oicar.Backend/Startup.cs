@@ -1,3 +1,4 @@
+using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,9 @@ using Microsoft.OpenApi.Models;
 using Oicar.Dal;
 using Oicar.Service.Interfaces;
 using Oicar.Service.Services;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Oicar.Api.Helpers;
 
 namespace Oicar.Backend
 {
@@ -24,7 +28,34 @@ namespace Oicar.Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IUserService, UserService>();
+            // configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+
+
+            services.AddScoped<IUserService, UserService>();
             services.AddTransient<IUserCloudConfigurationService, UserCloudConfigurationService>();
             services.AddTransient<ICalculatorService, CalculatorService>();
             services.AddTransient<ICloudFunctionService, CloudFunctionService>();
@@ -34,10 +65,32 @@ namespace Oicar.Backend
             services.AddTransient<IDbSQLService, DbSQLService>();
             services.AddDbContext<OicarContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("default")));
+
+            services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
              {
                  c.SwaggerDoc("v1", new OpenApiInfo { Title = "Oicar Cloud API", Version = "v1" });
+                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                 {
+                     In = ParameterLocation.Header,
+                     Description = "Please insert JWT with Bearer into field",
+                     Name = "Authorization",
+                     Type = SecuritySchemeType.ApiKey
+                 });
+                 c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+                       {
+                         new OpenApiSecurityScheme
+                         {
+                           Reference = new OpenApiReference
+                           {
+                             Type = ReferenceType.SecurityScheme,
+                             Id = "Bearer"
+                           }
+                          },
+                          new string[] { }
+                        }
+                      });
              });
         }
 
@@ -59,6 +112,12 @@ namespace Oicar.Backend
 
             app.UseRouting();
 
+            app.UseCors(x => x
+              .AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

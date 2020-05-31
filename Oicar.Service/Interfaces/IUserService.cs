@@ -5,7 +5,7 @@ namespace Oicar.Service.Interfaces
 {
     public interface IUserService
     {
-        object Login(LoginDTO user);
+        LoginDTO Login(LoginDTO user);
         object Register(User user);
     }
 }
