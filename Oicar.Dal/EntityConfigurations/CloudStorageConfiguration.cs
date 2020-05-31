@@ -283,6 +283,8 @@ namespace Oicar.Dal.EntityConfigurations
                 }
 
             );
+            entity.Property(x => x.Id)
+                .HasIdentityOptions(startValue: 31);
         }
     }
 }

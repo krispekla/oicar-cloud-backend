@@ -30,6 +30,8 @@ namespace Oicar.Dal.EntityConfigurations
                     Email = "test@test.com",
                 }
             );
+            entity.Property(x => x.Id)
+                .HasIdentityOptions(startValue: 3);
         }
     }
 }

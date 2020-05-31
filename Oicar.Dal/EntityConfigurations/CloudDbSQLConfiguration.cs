@@ -372,6 +372,8 @@ namespace Oicar.Dal.EntityConfigurations
                 Price = 84
             }
             );
+            entity.Property(x => x.Id)
+                .HasIdentityOptions(startValue: 28);
         }
     }
 }
