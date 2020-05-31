@@ -36,8 +36,7 @@ namespace Oicar.Api.Controllers
         [Route("login")]
         public ActionResult<LoginDTO> Login([FromBody] LoginDTO user)
         {
-            //return Ok(_userService.Login(user));
-            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            return Ok(_userService.Login(user));
         }
     }
 
