@@ -67,7 +67,7 @@ namespace Oicar.Backend
                 options.UseNpgsql(Configuration.GetConnectionString("default")));
 
             services.AddCors();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddSwaggerGen(c =>
              {
                  c.SwaggerDoc("v1", new OpenApiInfo { Title = "Oicar Cloud API", Version = "v1" });

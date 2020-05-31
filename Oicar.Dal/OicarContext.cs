@@ -6,16 +6,16 @@ namespace Oicar.Dal
 {
     public class OicarContext : DbContext
     {
-        //Uncomment on run
-        //public OicarContext(DbContextOptions<OicarContext> options) : base(options)
-        //{
-        //}
-
-        //Comment on run
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //Comment when using for migration or db update
+        public OicarContext(DbContextOptions<OicarContext> options) : base(options)
         {
-            optionsBuilder.UseNpgsql("server=localhost;database=postgres;User ID=postgres;password=postgres;");
         }
+
+        //Use for migration only
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseNpgsql("server=localhost;database=postgres;User ID=postgres;password=postgres;");
+        //}
 
         public DbSet<User> Users { get; set; }
         public DbSet<UserCloud> UserClouds { get; set; }
