@@ -22,16 +22,28 @@ namespace Oicar.Service.Services
         public List<CloudCombinationResultDTO> GetAll(int userId)
         {
             List<CloudCombinationResultDTO> finalResult = new List<CloudCombinationResultDTO>();
-            List <UserCloud> result = _uow.UserCloud.GetAllById(userId).ToList();
+            List<UserCloud> result = _uow.UserCloud.GetAllById(userId).ToList();
             foreach (UserCloud item in result)
             {
                 CloudCombinationResultDTO temp = new CloudCombinationResultDTO();
-                temp.CloudCombinationInput = JsonSerializer.Deserialize<CloudCombinationDTO>(item.UserInput);
-                temp.CloudCombinationResult.CloudDbSQL = item.CloudDbSQL;
-                temp.CloudCombinationResult.CloudFunction = item.CloudFunction;
-                temp.CloudCombinationResult.CloudStorage = item.CloudStorage;
-                temp.CloudCombinationResult.CloudVM = item.CloudVM;
-                temp.UserId = item.User.Id;
+                CloudCombinationDTO cloudCombinationInput = new CloudCombinationDTO();
+                CloudCombinationDTO cloudCombinationResult = new CloudCombinationDTO();
+
+                cloudCombinationInput = JsonSerializer.Deserialize<CloudCombinationDTO>(item.UserInput);
+                if (item.CloudDbSQL != null)
+                cloudCombinationResult.CloudDbSQL = item.CloudDbSQL;
+                if (item.CloudFunction != null)
+                    cloudCombinationResult.CloudFunction = item.CloudFunction;
+                if (item.CloudStorage != null)
+                    cloudCombinationResult.CloudStorage = item.CloudStorage;
+                if (item.CloudVM != null)
+                    cloudCombinationResult.CloudVM = item.CloudVM;
+
+                temp.CloudCombinationInput = cloudCombinationInput;
+                temp.CloudCombinationResult = cloudCombinationResult;
+                temp.UserId = userId;
+                temp.Name = item.Name;
+                temp.Id = item.Id;
                 finalResult.Add(temp);
             }
             return finalResult;
@@ -42,11 +54,12 @@ namespace Oicar.Service.Services
             UserCloud userCloud = new UserCloud();
             userCloud.UserInput = JsonSerializer.Serialize(cloudCombination.CloudCombinationInput);
             userCloud.User = _uow.Users.Get(cloudCombination.UserId);
-            userCloud.CloudDbSQL = cloudCombination.CloudCombinationResult.CloudDbSQL;
-            userCloud.CloudFunction = cloudCombination.CloudCombinationResult.CloudFunction;
-            userCloud.CloudStorage = cloudCombination.CloudCombinationResult.CloudStorage;
-            userCloud.CloudVM = cloudCombination.CloudCombinationResult.CloudVM;
+            userCloud.CloudDbSQL = cloudCombination.CloudCombinationResult.CloudDbSQL != null ? _uow.CloudDbSQL.Get(cloudCombination.CloudCombinationResult.CloudDbSQL.Id) : null;
+            userCloud.CloudFunction = cloudCombination.CloudCombinationResult.CloudFunction != null ? _uow.CloudFunction.Get(cloudCombination.CloudCombinationResult.CloudFunction.Id) : null;
+            userCloud.CloudStorage = cloudCombination.CloudCombinationResult.CloudStorage != null ? _uow.CloudStorage.Get(cloudCombination.CloudCombinationResult.CloudStorage.Id) : null;
+            userCloud.CloudVM = cloudCombination.CloudCombinationResult.CloudVM != null ? _uow.CloudVM.Get(cloudCombination.CloudCombinationResult.CloudVM.Id) : null;
             userCloud.IsActive = true;
+            userCloud.Name = cloudCombination.Name;
 
             _uow.UserCloud.Add(userCloud);
             _uow.Complete();

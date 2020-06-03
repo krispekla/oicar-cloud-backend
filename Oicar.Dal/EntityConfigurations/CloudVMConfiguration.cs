@@ -515,10 +515,136 @@ namespace Oicar.Dal.EntityConfigurations
                 AverageDaysPerWeek = 6,
                 CloudProvider = CloudProvider.GCLOUD,
                 Price = 821
+            },
+            new CloudVM()
+            {
+                Id = 37,
+                InstanceNb = 64,
+                OperatingSystem = Entities.OperatingSystem.Linux,
+                Core = 32,
+                Ram = 128,
+                Storage = 1024,
+                StorageType = StorageType.HDD,
+                AverageHoursPerDay = 24,
+                AverageDaysPerWeek = 7,
+                CloudProvider = CloudProvider.GCLOUD,
+                Price = 4200
+            },
+            new CloudVM()
+            {
+                Id = 38,
+                InstanceNb = 64,
+                OperatingSystem = Entities.OperatingSystem.Windows,
+                Core = 32,
+                Ram = 128,
+                Storage = 1024,
+                StorageType = StorageType.SSD,
+                AverageHoursPerDay = 24,
+                AverageDaysPerWeek = 7,
+                CloudProvider = CloudProvider.GCLOUD,
+                Price = 4300
+            },
+            new CloudVM()
+            {
+                Id = 39,
+                InstanceNb = 64,
+                OperatingSystem = Entities.OperatingSystem.Windows,
+                Core = 4,
+                Ram = 8,
+                Storage = 1024,
+                StorageType = StorageType.HDD,
+                AverageHoursPerDay = 24,
+                AverageDaysPerWeek = 7,
+                CloudProvider = CloudProvider.GCLOUD,
+                Price = 4500
+            },
+            new CloudVM()
+            {
+                Id = 40,
+                InstanceNb = 64,
+                OperatingSystem = Entities.OperatingSystem.Linux,
+                Core = 32,
+                Ram = 128,
+                Storage = 1024,
+                StorageType = StorageType.HDD,
+                AverageHoursPerDay = 24,
+                AverageDaysPerWeek = 7,
+                CloudProvider = CloudProvider.AWS,
+                Price = 4900
+            },
+            new CloudVM()
+            {
+                Id = 41,
+                InstanceNb = 64,
+                OperatingSystem = Entities.OperatingSystem.Windows,
+                Core = 32,
+                Ram = 128,
+                Storage = 1024,
+                StorageType = StorageType.SSD,
+                AverageHoursPerDay = 24,
+                AverageDaysPerWeek = 7,
+                CloudProvider = CloudProvider.AWS,
+                Price = 5300
+            },
+            new CloudVM()
+            {
+                Id = 42,
+                InstanceNb = 64,
+                OperatingSystem = Entities.OperatingSystem.Windows,
+                Core = 4,
+                Ram = 8,
+                Storage = 1024,
+                StorageType = StorageType.HDD,
+                AverageHoursPerDay = 24,
+                AverageDaysPerWeek = 7,
+                CloudProvider = CloudProvider.AWS,
+                Price = 5500
+            },
+            new CloudVM()
+            {
+                Id = 43,
+                InstanceNb = 64,
+                OperatingSystem = Entities.OperatingSystem.Linux,
+                Core = 32,
+                Ram = 128,
+                Storage = 1024,
+                StorageType = StorageType.HDD,
+                AverageHoursPerDay = 24,
+                AverageDaysPerWeek = 7,
+                CloudProvider = CloudProvider.AZURE,
+                Price = 5210
+            },
+            new CloudVM()
+            {
+                Id = 44,
+                InstanceNb = 64,
+                OperatingSystem = Entities.OperatingSystem.Windows,
+                Core = 32,
+                Ram = 128,
+                Storage = 1024,
+                StorageType = StorageType.SSD,
+                AverageHoursPerDay = 24,
+                AverageDaysPerWeek = 7,
+                CloudProvider = CloudProvider.AZURE,
+                Price = 5600
+            },
+            new CloudVM()
+            {
+                Id = 45,
+                InstanceNb = 64,
+                OperatingSystem = Entities.OperatingSystem.Windows,
+                Core = 4,
+                Ram = 8,
+                Storage = 1024,
+                StorageType = StorageType.HDD,
+                AverageHoursPerDay = 24,
+                AverageDaysPerWeek = 7,
+                CloudProvider = CloudProvider.AZURE,
+                Price = 4100
             }
             );
             entity.Property(x => x.Id)
-                .HasIdentityOptions(startValue: 37);
+                .HasIdentityOptions(startValue: 46);
         }
     }
 }

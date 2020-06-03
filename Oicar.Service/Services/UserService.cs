@@ -41,7 +41,7 @@ namespace Oicar.Service.Services
             if (string.IsNullOrWhiteSpace(user.Password))
                 throw new Exception("Lozinka nije unesena");
 
-            user.Password =  _passwordHasher.Hash(user.Password);
+            user.Password = _passwordHasher.Hash(user.Password);
 
             _uow.Users.Add(user);
             _uow.Complete();
@@ -54,26 +54,26 @@ namespace Oicar.Service.Services
 
             if (resultUser != null)
             {
-               if(!_passwordHasher.Check(resultUser.Password, user.Password))
+                if (!_passwordHasher.Check(resultUser.Password, user.Password))
                     throw new Exception("Kriva lozinka ili korisnicki racun ne postoji");
 
-          
-            // authentication successful so generate jwt token
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, resultUser.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            user.Token = tokenHandler.WriteToken(token);
 
-            return user;
+                // authentication successful so generate jwt token
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                    new Claim(ClaimTypes.Name, resultUser.Id.ToString())
+                    }),
+                    Expires = DateTime.UtcNow.AddDays(1),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                user.Token = tokenHandler.WriteToken(token);
+                user.Id = resultUser.Id;
+                return user;
             }
             else
                 throw new Exception("Kriva lozinka ili korisnicki racun ne postoji");

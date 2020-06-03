@@ -20,6 +20,6 @@ namespace Oicar.Dal.Entities
         public CloudProvider CloudProvider { get; set; }
         public double Price { get; set; }
 
-        public List<UserCloud> UserCloud { get; set; }
+        public virtual List<UserCloud> UserCloud { get; set; }
     }
 }

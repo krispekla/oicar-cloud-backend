@@ -9,11 +9,12 @@ namespace Oicar.Dal.Entities
         [Column(TypeName = "json")]
         public string UserInput { get; set; }
 
-        public User User { get; set; }
-        public CloudDbSQL CloudDbSQL { get; set; }
-        public CloudFunction CloudFunction { get; set; }
-        public CloudStorage CloudStorage { get; set; }
-        public CloudVM CloudVM { get; set; }
+        public string Name { get; set; }
+        public virtual User User { get; set; }
+        public virtual CloudDbSQL CloudDbSQL { get; set; }
+        public virtual CloudFunction CloudFunction { get; set; }
+        public virtual CloudStorage CloudStorage { get; set; }
+        public virtual CloudVM CloudVM { get; set; }
         public bool IsActive { get; set; }
     }
 }

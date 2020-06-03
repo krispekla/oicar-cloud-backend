@@ -10,6 +10,8 @@ namespace Oicar.Dal.EntityConfigurations
         public UserCloudConfiguration(EntityTypeBuilder<UserCloud> entity)
         {
             entity.Property(x => x.IsActive).HasDefaultValue(1);
+            entity.Property(x => x.Id)
+             .HasIdentityOptions(startValue: 2);
         }
     }
 }
