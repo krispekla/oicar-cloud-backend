@@ -8,6 +8,9 @@ namespace Oicar.Dal.Interfaces
     public interface IUserCloudRepository : IRepository<UserCloud>
     {
         IEnumerable<UserCloud> GetAllById(int userId);
-
+        IEnumerable<CloudDbSQL> GetAllUserCloudDbSQL();
+        IEnumerable<CloudFunction> GetAllUserCloudFunctions();
+        IEnumerable<CloudStorage> GetAllUserCloudStorage();
+        IEnumerable<CloudVM> GetAllUserCloudVM();
     }
 }

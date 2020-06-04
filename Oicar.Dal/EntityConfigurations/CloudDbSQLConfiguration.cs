@@ -322,10 +322,10 @@ namespace Oicar.Dal.EntityConfigurations
             {
                 Id = 24,
                 CloudProvider = CloudProvider.AZURE,
-                Instance = 1,
-                Ram = 32,
+                Instance = 120,
+                Ram = 128,
                 CpuCores = 8,
-                BaskupSize = 64,
+                BaskupSize = 1024,
                 AverageDaysPerWeek = 7,
                 AverageHoursPerDay = 24,
                 SQLServerType = SQLServerType.Standard2017,
@@ -336,40 +336,40 @@ namespace Oicar.Dal.EntityConfigurations
               {
                   Id = 25,
                   CloudProvider = CloudProvider.AWS,
-                  Instance = 1,
-                  Ram = 32,
-                  CpuCores = 16,
-                  BaskupSize = 64,
+                  Instance = 120,
+                  Ram = 128,
+                  CpuCores = 64,
+                  BaskupSize = 1024,
                   AverageDaysPerWeek = 7,
                   AverageHoursPerDay = 24,
                   SQLServerType = SQLServerType.Standard2017,
-                  Price = 59
+                  Price = 5900
               },
             new CloudDbSQL()
             {
                 Id = 26,
                 CloudProvider = CloudProvider.GCLOUD,
-                Instance = 1,
-                Ram = 32,
-                CpuCores = 16,
-                BaskupSize = 64,
+                Instance = 120,
+                Ram = 128,
+                CpuCores = 64,
+                BaskupSize = 1024,
                 AverageDaysPerWeek = 7,
                 AverageHoursPerDay = 24,
                 SQLServerType = SQLServerType.Standard2017,
-                Price = 56
+                Price = 5600
             },
             new CloudDbSQL()
             {
                 Id = 27,
                 CloudProvider = CloudProvider.AZURE,
-                Instance = 1,
-                Ram = 32,
-                CpuCores = 16,
-                BaskupSize = 64,
+                Instance = 120,
+                Ram = 128,
+                CpuCores = 64,
+                BaskupSize = 1024,
                 AverageDaysPerWeek = 7,
                 AverageHoursPerDay = 24,
                 SQLServerType = SQLServerType.Standard2017,
-                Price = 84
+                Price = 8400
             }
             );
             entity.Property(x => x.Id)

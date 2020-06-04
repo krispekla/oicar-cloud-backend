@@ -257,29 +257,29 @@ namespace Oicar.Dal.EntityConfigurations
                 new CloudStorage()
                 {
                     Id = 28,
-                    TotalAmount = 128,
-                    ReadOperationsPerMonth = 500000,
-                    WriteOperationsPerMonth = 500000,
+                    TotalAmount = 90000,
+                    ReadOperationsPerMonth = 800000,
+                    WriteOperationsPerMonth = 800000,
                     CloudProvider = CloudProvider.AWS,
-                    Price = 66
+                    Price = 660
                 },
                 new CloudStorage()
                 {
                     Id = 29,
-                    TotalAmount = 64,
-                    ReadOperationsPerMonth = 125000,
-                    WriteOperationsPerMonth = 125000,
+                    TotalAmount = 90000,
+                    ReadOperationsPerMonth = 800000,
+                    WriteOperationsPerMonth = 800000,
                     CloudProvider = CloudProvider.GCLOUD,
-                    Price = 46
+                    Price = 460
                 },
                 new CloudStorage()
                 {
                     Id = 30,
-                    TotalAmount = 64,
-                    ReadOperationsPerMonth = 125000,
-                    WriteOperationsPerMonth = 125000,
+                    TotalAmount = 90000,
+                    ReadOperationsPerMonth = 800000,
+                    WriteOperationsPerMonth = 800000,
                     CloudProvider = CloudProvider.AZURE,
-                    Price = 55
+                    Price = 550
                 }
 
             );

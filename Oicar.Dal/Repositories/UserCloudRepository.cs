@@ -25,5 +25,25 @@ namespace Oicar.Dal.Repositories
                 .Include(y => y.CloudDbSQL)
                 .Include(g => g.CloudVM);
         }
+
+        public IEnumerable<CloudDbSQL> GetAllUserCloudDbSQL()
+        {
+            return Context.Set<UserCloud>().Where(x => x.CloudDbSQL != null).Select(x => x.CloudDbSQL);
+        }
+
+        public IEnumerable<CloudFunction> GetAllUserCloudFunctions()
+        {
+            return Context.Set<UserCloud>().Where(x => x.CloudFunction != null).Select(x => x.CloudFunction);
+        }
+
+        public IEnumerable<CloudStorage> GetAllUserCloudStorage()
+        {
+            return Context.Set<UserCloud>().Where(x => x.CloudStorage != null).Select(x => x.CloudStorage);
+        }
+
+        public IEnumerable<CloudVM> GetAllUserCloudVM()
+        {
+            return Context.Set<UserCloud>().Where(x => x.CloudVM != null).Select(x => x.CloudVM);
+        }
     }
 }

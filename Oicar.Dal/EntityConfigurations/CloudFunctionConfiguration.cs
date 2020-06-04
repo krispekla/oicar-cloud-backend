@@ -119,10 +119,37 @@ namespace Oicar.Dal.EntityConfigurations
                 ExecutionsPerMonth = 1000000,
                 CloudProvider = CloudProvider.GCLOUD,
                 Price = 39
+            },
+            new CloudFunction()
+            {
+                Id = 13,
+                ExecutinPerRequestInMiliseconds = 200000,
+                MemorySizeInMB = 100000,
+                ExecutionsPerMonth = 10000000,
+                CloudProvider = CloudProvider.AWS,
+                Price = 4400
+            },
+            new CloudFunction()
+            {
+                Id = 14,
+                ExecutinPerRequestInMiliseconds = 200000,
+                MemorySizeInMB = 100000,
+                ExecutionsPerMonth = 10000000,
+                CloudProvider = CloudProvider.AZURE,
+                Price = 4100
+            },
+            new CloudFunction()
+            {
+                Id = 15,
+                ExecutinPerRequestInMiliseconds = 200000,
+                MemorySizeInMB = 100000,
+                ExecutionsPerMonth = 10000000,
+                CloudProvider = CloudProvider.GCLOUD,
+                Price = 3900
             }
             );
             entity.Property(x => x.Id)
-                  .HasIdentityOptions(startValue: 13);
+                  .HasIdentityOptions(startValue: 16);
         }
     }
 }

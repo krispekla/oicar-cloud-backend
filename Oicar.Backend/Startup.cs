@@ -63,6 +63,7 @@ namespace Oicar.Backend
             services.AddTransient<ICloudVMService, CloudVMService>();
             services.AddTransient<ICloudNewsService, CloudNewsService>();
             services.AddTransient<IDbSQLService, DbSQLService>();
+            services.AddTransient<IStatisticService, StatisticService>();
             services.AddDbContext<OicarContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("default")));
 
