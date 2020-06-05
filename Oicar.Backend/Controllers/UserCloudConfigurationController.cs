@@ -31,5 +31,19 @@ namespace Oicar.Api.Controllers
         {
             return Ok(_userCloudConfigurationService.GetAll(id));
         }
+        
+        [HttpPost]
+        [Route("changeName")]
+        public ActionResult<CloudCombinationResultDTO> ChangeName([FromBody]CloudCombinationResultDTO cloudComb)
+        {
+            return Ok(_userCloudConfigurationService.ChangeName(cloudComb));
+        }
+
+        [HttpPost]
+        public ActionResult Delete([FromBody]CloudCombinationResultDTO cloudComb)
+        {
+            return Ok(_userCloudConfigurationService.Delete(cloudComb));
+        }
+
     }
 }

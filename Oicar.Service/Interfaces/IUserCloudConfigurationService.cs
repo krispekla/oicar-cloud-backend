@@ -9,5 +9,7 @@ namespace Oicar.Service.Interfaces
     {
         List<CloudCombinationResultDTO> GetAll(int userId);
         object Save(CloudCombinationResultDTO cloudCombination);
+        object Delete(CloudCombinationResultDTO cloudCombination);
+        CloudCombinationResultDTO ChangeName(CloudCombinationResultDTO cloudComb);
     }
 }

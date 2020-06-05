@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 using Oicar.Dal;
 using Oicar.Dal.Entities;
 using Oicar.Dal.Interfaces;
@@ -19,10 +20,48 @@ namespace Oicar.Service.Services
             _uow = new UnitOfWork(context);
         }
 
+        public CloudCombinationResultDTO ChangeName(CloudCombinationResultDTO cloudComb)
+        {
+            UserCloud item = _uow.UserCloud.Find(x => x.Id == cloudComb.Id).FirstOrDefault();
+            item.Name = cloudComb.Name;
+            _uow.Complete();
+
+
+            CloudCombinationResultDTO temp = new CloudCombinationResultDTO();
+            CloudCombinationDTO cloudCombinationInput = new CloudCombinationDTO();
+            CloudCombinationDTO cloudCombinationResult = new CloudCombinationDTO();
+
+            cloudCombinationInput = JsonSerializer.Deserialize<CloudCombinationDTO>(item.UserInput);
+            if (item.CloudDbSQL != null)
+                cloudCombinationResult.CloudDbSQL = item.CloudDbSQL;
+            if (item.CloudFunction != null)
+                cloudCombinationResult.CloudFunction = item.CloudFunction;
+            if (item.CloudStorage != null)
+                cloudCombinationResult.CloudStorage = item.CloudStorage;
+            if (item.CloudVM != null)
+                cloudCombinationResult.CloudVM = item.CloudVM;
+
+            temp.CloudCombinationInput = cloudCombinationInput;
+            temp.CloudCombinationResult = cloudCombinationResult;
+            temp.UserId = cloudComb.UserId;
+            temp.Name = item.Name;
+            temp.Id = item.Id;
+
+            return temp;
+        }
+
+        public object Delete(CloudCombinationResultDTO cloudCombination)
+        {
+            UserCloud cloud = _uow.UserCloud.Find(x => x.Id == cloudCombination.Id).FirstOrDefault();
+            cloud.IsActive = false;
+            _uow.Complete();
+            return new { message = "Konfiguracija uspjesno obrisana" };
+        }
+
         public List<CloudCombinationResultDTO> GetAll(int userId)
         {
             List<CloudCombinationResultDTO> finalResult = new List<CloudCombinationResultDTO>();
-            List<UserCloud> result = _uow.UserCloud.GetAllById(userId).ToList();
+            List<UserCloud> result = _uow.UserCloud.GetAllById(userId).Where(x => x.IsActive).ToList();
             foreach (UserCloud item in result)
             {
                 CloudCombinationResultDTO temp = new CloudCombinationResultDTO();
@@ -31,7 +70,7 @@ namespace Oicar.Service.Services
 
                 cloudCombinationInput = JsonSerializer.Deserialize<CloudCombinationDTO>(item.UserInput);
                 if (item.CloudDbSQL != null)
-                cloudCombinationResult.CloudDbSQL = item.CloudDbSQL;
+                    cloudCombinationResult.CloudDbSQL = item.CloudDbSQL;
                 if (item.CloudFunction != null)
                     cloudCombinationResult.CloudFunction = item.CloudFunction;
                 if (item.CloudStorage != null)

@@ -6,8 +6,6 @@ using Oicar.Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 
 namespace Oicar.Service.Services
 {
@@ -18,11 +16,6 @@ namespace Oicar.Service.Services
         public StatisticService(OicarContext context)
         {
             _uow = new UnitOfWork(context);
-        }
-
-        public List<CloudCombinationDTO> GetAll()
-        {
-            throw new NotImplementedException();
         }
 
         public List<KeyValuePair<CloudDbSQL, int>> GetTopCloudDbSQL()
